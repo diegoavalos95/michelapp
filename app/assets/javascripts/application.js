@@ -50,7 +50,7 @@ $(document).on('turbolinks:load', (function(){
   $('[data-action="filter"]').filterTable();
 })(jQuery);)
 
-$(function(){
+$(document).on('turbolinks:load',(function(){
   $('[data-action="filter"]').filterTable();
   
   $('.container').on('click', '.panel-heading span.filter', function(e){
@@ -63,7 +63,7 @@ $(function(){
     }
   });
   $('[data-toggle="tooltip"]').tooltip();
-})
+}))
 
 var goToProduct = function(ev) {
   var id = ev.dataset.id;
