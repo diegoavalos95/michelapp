@@ -16,7 +16,7 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
-$(document).on('turbolinks:load', (function(){
+(function(){
     'use strict';
   var $ = jQuery;
   $.fn.extend({
@@ -48,9 +48,9 @@ $(document).on('turbolinks:load', (function(){
     }
   });
   $('[data-action="filter"]').filterTable();
-})(jQuery);)
+})(jQuery);
 
-$(document).on('turbolinks:load',(function(){
+$(function(){
   $('[data-action="filter"]').filterTable();
   
   $('.container').on('click', '.panel-heading span.filter', function(e){
@@ -63,7 +63,7 @@ $(document).on('turbolinks:load',(function(){
     }
   });
   $('[data-toggle="tooltip"]').tooltip();
-}))
+})
 
 var goToProduct = function(ev) {
   var id = ev.dataset.id;
