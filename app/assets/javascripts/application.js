@@ -16,7 +16,7 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
-(function(){
+$(document).on('turbolinks:load', (function(){
     'use strict';
   var $ = jQuery;
   $.fn.extend({
@@ -48,7 +48,7 @@
     }
   });
   $('[data-action="filter"]').filterTable();
-})(jQuery);
+})(jQuery);)
 
 $(function(){
   $('[data-action="filter"]').filterTable();
@@ -77,10 +77,10 @@ var goToBrand = function(ev) {
 
 var newProduct = function() {
   console.log($('#new-product'));
-  $('#new-product').append('<p>Que pez</p>');
+  $('#new-product').append('<p>asd</p>');
 }
 
 var newBrand = function() {
   console.log($('#new-brand'));
-  $('#new-brand').append('<p>jeje</p>');
+  $('#new-brand').append('<p>qwe</p>');
 }
