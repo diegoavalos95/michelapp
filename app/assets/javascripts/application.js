@@ -74,3 +74,13 @@ var goToBrand = function(ev) {
   var id = ev.dataset.id;
   Turbolinks.visit('/brands/' + id);
 }
+
+var newProduct = function() {
+  console.log($('#new-product'));
+  $('#new-product').append('<p>Que pez</p>');
+}
+
+var newBrand = function() {
+  console.log($('#new-brand'));
+  $('#new-brand').append('<p>jeje</p>');
+}

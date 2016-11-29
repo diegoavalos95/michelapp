@@ -5,6 +5,11 @@ class BrandsController < ApplicationController
   # GET /brands.json
   def index
     @brands = Brand.all
+    @brand = Product.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /brands/1
@@ -15,10 +20,16 @@ class BrandsController < ApplicationController
   # GET /brands/new
   def new
     @brand = Brand.new
+    respond_to do |format|
+      format.js
+    end
   end
 
   # GET /brands/1/edit
   def edit
+    respond_to do |format|
+      format.js
+    end
   end
 
   # POST /brands
@@ -28,10 +39,10 @@ class BrandsController < ApplicationController
 
     respond_to do |format|
       if @brand.save
-        format.html { redirect_to @brand, notice: 'Brand was successfully created.' }
+        format.html { redirect_to action: 'index' }
         format.json { render :show, status: :created, location: @brand }
       else
-        format.html { render :new }
+        format.html { redirect_to action: 'index' }
         format.json { render json: @brand.errors, status: :unprocessable_entity }
       end
     end
@@ -42,10 +53,10 @@ class BrandsController < ApplicationController
   def update
     respond_to do |format|
       if @brand.update(brand_params)
-        format.html { redirect_to @brand, notice: 'Brand was successfully updated.' }
+        format.html { redirect_to action: 'index' }
         format.json { render :show, status: :ok, location: @brand }
       else
-        format.html { render :edit }
+        format.html { redirect_to action: 'index' }
         format.json { render json: @brand.errors, status: :unprocessable_entity }
       end
     end

@@ -5,6 +5,11 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
+    @product = Product.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /products/1
@@ -15,10 +20,16 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    respond_to do |format|
+      format.js
+    end
   end
 
   # GET /products/1/edit
   def edit
+    respond_to do |format|
+      format.js
+    end
   end
 
   # POST /products
@@ -28,10 +39,10 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
+        format.html { redirect_to action: 'index' }
         format.json { render :show, status: :created, location: @product }
       else
-        format.html { render :new }
+        format.html { redirect_to action: 'index' }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
@@ -42,10 +53,10 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+        format.html { redirect_to action: 'index' }
         format.json { render :show, status: :ok, location: @product }
       else
-        format.html { render :edit }
+        format.html { redirect_to action: 'index' }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end

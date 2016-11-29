@@ -26,11 +26,11 @@
           </thead>
           <tbody>
             <% @brands.each do |brand| %>
-              <tr data-id="<%= brand.id %>" onClick="goToBrand(this)">
-                <td><%= brand.id %></td>
+              <tr data-id="<%= brand.id %>">
+                <td data-id="<%= brand.id %>" onClick="goToBrand(this);"><%= brand.id %></td>
                 <td><%= brand.name %></td>
-                <td><%= link_to 'Edit', edit_brand_path(brand) %></td>
-                <td><%= link_to 'Destroy', brand, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to icon('pencil'), edit_brand_path(brand) %></td>
+                <td><%= link_to icon('trash-o'), brand, method: :delete, data: { confirm: 'Are you sure?' } %></td>
               </tr>
             <% end %>
           </tbody>
@@ -39,6 +39,9 @@
     </div>
   </div>
   <div class="row">
-    <%= link_to 'New Brand', new_brand_path, :class => 'btn btn-primary new' %>
+    <%= link_to 'New Brand', new_brand_path, remote: true, :class => 'btn btn-primary new' %>
+  </div>
+  <div class="row">
+    <div id="new-brand" style="display:none;"></div>
   </div>
 </div>

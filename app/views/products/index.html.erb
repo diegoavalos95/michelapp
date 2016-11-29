@@ -29,14 +29,14 @@
           </thead>
           <tbody>
             <% @products.each do |product| %>
-              <tr data-id="<%= product.id %>" onClick="goToProduct(this)">
-                <td><%= product.id %></td>
+              <tr data-id="<%= product.id %>">
+                <td data-id="<%= product.id %>" onClick="goToProduct(this);"><%= product.id %></td>
                 <td><%= product.name %></td>
                 <td><%= product.brand.name %></td>
                 <td><%= product.description %></td>
                 <td><%= product.price %></td>
-                <td><%= link_to 'Edit', edit_product_path(product) %></td>
-                <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td class="icon"><%= link_to icon('pencil'), edit_product_path(product), remote: true %></td>
+                <td class="icon"><%= link_to icon('trash-o'), product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
               </tr>
             <% end %>
           </tbody>
@@ -45,6 +45,9 @@
     </div>
   </div>
   <div class="row">
-    <%= link_to 'New Product', new_product_path, :class => 'btn btn-primary new' %>
+    <%= link_to 'New Product', new_product_path, remote: true, :class => 'btn btn-primary new' %>
+  </div>
+  <div class="row">
+    <div id="new-product" style="display:none;"></div>
   </div>
 </div>
