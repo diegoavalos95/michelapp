@@ -15,8 +15,8 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
-
-(function(){
+$(document).on('turbolinks:load', function() {
+  (function(){
     'use strict';
   var $ = jQuery;
   $.fn.extend({
@@ -64,6 +64,9 @@ $(function(){
   });
   $('[data-toggle="tooltip"]').tooltip();
 })
+});
+
+
 
 var goToProduct = function(ev) {
   var id = ev.dataset.id;
